@@ -15,10 +15,15 @@ function executeSearch() {
     if (counts[d] !== undefined) counts[d]++;
   });
 
+  // 9桁の文字列（検索キー）を作成
   let result5 = "";
   for (let i = 1; i <= 9; i++) {
     result5 += counts[i];
   }
+
+  // --- 追加：先頭と末尾の0を削除する ---
+  result5 = result5.replace(/^0+|0+$/g, '');
+  // ----------------------------------
 
   document.getElementById('resultDisplay').innerText = "5進数変換結果: " + result5;
 
