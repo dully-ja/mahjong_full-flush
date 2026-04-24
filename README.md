@@ -1,1 +1,1 @@
-# mahjong_full_flush
+# mahjong_full-flush
