@@ -1,3 +1,5 @@
+// ソースにある <a id="___"> を直接ピンポイントで見つけ出します。これで、<br> や他の数列が混ざっていても、IDを優先してジャンプするようになります。
+
 function executeSearch() {
   const input = document.getElementById('decimalInput').value;
   
@@ -22,7 +24,7 @@ function executeSearch() {
 
   // --- 検索ロジックの改善 ---
   
-  // 1. まず ID が一致する要素を直接探す（<a id="311111113"> 対策）
+  // 1. まず ID が一致する要素を直接探す（<a id="___"> 対策）
   let targetElement = document.getElementById(result5);
 
   // 2. IDで見つからない場合、ページ内の全要素からテキストを探す
