@@ -875,5 +875,5 @@ input[type=number] {
 </style>
 
 <!-- 4. 2つのプログラムを読み込む -->
-<script src="search.js"></script>
+<script src="search2.js"></script>
 <script src="toc.js"></script>
