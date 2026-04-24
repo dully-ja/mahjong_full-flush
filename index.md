@@ -857,6 +857,18 @@
     font-size: 0.9em;
   }
 }
+/* 入力欄の上下矢印（スピンボタン）を非表示にする */
+/* Chrome, Safari, Edge, Opera 用 */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox 用 */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 </style>
 
 <!-- 4. 2つのプログラムを読み込む -->
