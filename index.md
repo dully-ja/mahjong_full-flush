@@ -1,10 +1,6 @@
 ---
-
-<!-- 
 layout: default
-title: マイページ
--->
-
+title: What are the winning tiles?
 ---
 
 <!-- 
