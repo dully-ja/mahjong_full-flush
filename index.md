@@ -825,59 +825,40 @@
 |<a id="31111312">31111312</a><br>1112345666788|.|111|2|3|4|5|6|{}|
 |678|6<br>3||||||66|{7}|88|
 
-<!-- 目次を表示する場所 -->
+<!-- 1. 検索窓の見た目（サイドバーの上の方に表示されます） -->
+<div class="sidebar-search" style="position: fixed; left: 20px; top: 20px; width: 200px; z-index: 1000; background: #fff; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+  <p style="margin: 0; font-size: 0.8em;">13桁入力検索</p>
+  <input type="number" id="decimalInput" style="width: 100%; box-sizing: border-box;">
+  <button onclick="executeSearch()" style="width: 100%; margin-top: 5px;">変換して移動</button>
+  <p id="resultDisplay" style="margin: 5px 0 0 0; font-size: 0.7em; color: #666;"></p>
+</div>
+
+<!-- 2. 目次の表示場所 -->
 <div id="toc-container" class="sidebar-nav">
   <p style="font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #ccc;">目次</p>
   <ul id="toc-list" style="list-style: none; padding-left: 0;"></ul>
 </div>
 
+<!-- 3. デザイン（CSS） -->
 <style>
-/* サイドバーの見た目を整えるCSS */
+/* 以前お伝えしたCSSをそのまま、あるいは微調整してここに置く */
 @media (min-width: 1000px) {
-  body { padding-left: 250px; } /* メインコンテンツを右に寄せる */
+  body { padding-left: 250px; }
   .sidebar-nav {
     position: fixed;
     left: 20px;
-    top: 150px; /* 検索窓の下あたりに配置 */
+    top: 150px; /* 検索窓の下に配置 */
     width: 200px;
-    max-height: 70vh;
+    max-height: 60vh;
     overflow-y: auto;
     background: #f9f9f9;
     padding: 15px;
     border-radius: 5px;
     font-size: 0.9em;
   }
-  .sidebar-nav a { text-decoration: none; color: #333; }
-  .sidebar-nav a:hover { color: #007bff; }
-}
-/* スマホの時は目次を隠すか、上に表示する設定 */
-@media (max-width: 999px) {
-  .sidebar-nav { display: none; }
 }
 </style>
 
-<script>
-// ページ内の見出し（h2, h3）を自動で拾って目次を作るスクリプト
-window.addEventListener('DOMContentLoaded', () => {
-  const tocList = document.getElementById('toc-list');
-  const headers = document.querySelectorAll('h2, h3'); // 目次に載せたい見出しレベル
-
-  headers.forEach((header, index) => {
-    // 見出しにIDがない場合は自動で付与
-    if (!header.id) {
-      header.id = 'header-' + index;
-    }
-
-    const li = document.createElement('li');
-    li.style.marginBottom = "5px";
-    li.style.paddingLeft = header.tagName === 'H3' ? "15px" : "0px"; // H3は少し下げる
-
-    const a = document.createElement('a');
-    a.href = '#' + header.id;
-    a.textContent = header.textContent;
-    
-    li.appendChild(a);
-    tocList.appendChild(li);
-  });
-});
-</script>
+<!-- 4. 2つのプログラムを読み込む -->
+<script src="search.js"></script>
+<script src="toc.js"></script>
