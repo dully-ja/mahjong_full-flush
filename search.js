@@ -48,4 +48,6 @@ function executeSearch() {
   } else {
     alert("一致する文字列が見つかりませんでした: " + result5);
   }
+// search.js の executeSearch 関数の最後（ } の直前）に追加
+document.getElementById('decimalInput').select(); 
 }
