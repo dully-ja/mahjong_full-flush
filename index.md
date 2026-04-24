@@ -1,8 +1,3 @@
----
-title: 多面張聴牌全集(all types of multiple winning tiles)
-
----
-
 ## 1枚形_one-tile structure
 
 |Pattern<br>ex.Hand<hr>ex.WinTile|Tiles<br>Kinds|1|2|3|4|5|6|7|8|9|
@@ -829,3 +824,60 @@ title: 多面張聴牌全集(all types of multiple winning tiles)
 |-
 |<a id="31111312">31111312</a><br>1112345666788|.|111|2|3|4|5|6|{}|
 |678|6<br>3||||||66|{7}|88|
+
+<!-- 目次を表示する場所 -->
+<div id="toc-container" class="sidebar-nav">
+  <p style="font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #ccc;">目次</p>
+  <ul id="toc-list" style="list-style: none; padding-left: 0;"></ul>
+</div>
+
+<style>
+/* サイドバーの見た目を整えるCSS */
+@media (min-width: 1000px) {
+  body { padding-left: 250px; } /* メインコンテンツを右に寄せる */
+  .sidebar-nav {
+    position: fixed;
+    left: 20px;
+    top: 150px; /* 検索窓の下あたりに配置 */
+    width: 200px;
+    max-height: 70vh;
+    overflow-y: auto;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+  }
+  .sidebar-nav a { text-decoration: none; color: #333; }
+  .sidebar-nav a:hover { color: #007bff; }
+}
+/* スマホの時は目次を隠すか、上に表示する設定 */
+@media (max-width: 999px) {
+  .sidebar-nav { display: none; }
+}
+</style>
+
+<script>
+// ページ内の見出し（h2, h3）を自動で拾って目次を作るスクリプト
+window.addEventListener('DOMContentLoaded', () => {
+  const tocList = document.getElementById('toc-list');
+  const headers = document.querySelectorAll('h2, h3'); // 目次に載せたい見出しレベル
+
+  headers.forEach((header, index) => {
+    // 見出しにIDがない場合は自動で付与
+    if (!header.id) {
+      header.id = 'header-' + index;
+    }
+
+    const li = document.createElement('li');
+    li.style.marginBottom = "5px";
+    li.style.paddingLeft = header.tagName === 'H3' ? "15px" : "0px"; // H3は少し下げる
+
+    const a = document.createElement('a');
+    a.href = '#' + header.id;
+    a.textContent = header.textContent;
+    
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+});
+</script>
