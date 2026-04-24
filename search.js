@@ -1,4 +1,3 @@
-// 13桁の10進数を5進数（枚数カウント）に変換してジャンプする関数
 function executeSearch() {
   const input = document.getElementById('decimalInput').value;
   
@@ -22,23 +21,31 @@ function executeSearch() {
 
   document.getElementById('resultDisplay').innerText = "5進数変換結果: " + result5;
 
-  // ページ内を検索
-  // 見出し（h2, h3）の中から、変換結果の数字が含まれているものを探す
-  const headers = document.querySelectorAll('h2, h3');
+  // --- 修正ポイント：ページ内の「すべての要素」からテキストを探す ---
+  // ページ内のすべてのタグ（p, td, h1, h2, h3, li など）を取得
+  const allElements = document.querySelectorAll('p, td, th, h1, h2, h3, li, span');
   let targetElement = null;
 
-  headers.forEach(h => {
-    if (h.textContent.includes(result5)) {
-      targetElement = h;
+  for (let el of allElements) {
+    // 要素のテキストが、変換後の5進数と「完全に一致」するか「含んでいる」かチェック
+    // ※ 誤作動を防ぐため、ここでは「テキストが検索キーそのもの」である要素を優先します
+    if (el.innerText.trim() === result5 || (el.children.length === 0 && el.innerText.includes(result5))) {
+      targetElement = el;
+      break; // 最初に見つかった場所で止める
     }
-  });
+  }
 
   if (targetElement) {
-    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    // 見つけた場所を一時的に黄色くする
+    targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' }); // 画面中央に来るように調整
+    
+    // 強調表示（フラッシュ）
+    const originalBg = targetElement.style.backgroundColor;
     targetElement.style.backgroundColor = "#fff3cd";
-    setTimeout(() => { targetElement.style.backgroundColor = "transparent"; }, 2000);
+    targetElement.style.transition = "background-color 0.5s";
+    setTimeout(() => {
+      targetElement.style.backgroundColor = originalBg || "transparent";
+    }, 2000);
   } else {
-    alert("一致するセクションが見つかりませんでした: " + result5);
+    alert("一致する文字列が見つかりませんでした: " + result5);
   }
 }
