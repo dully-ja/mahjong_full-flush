@@ -1,0 +1,1 @@
+# mahjong_full_flush
