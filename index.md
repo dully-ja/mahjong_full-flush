@@ -1,6 +1,6 @@
 ## 1枚形_one-tile structure
 
-| <div style="line-height:1.2;">Pattern<br>ex.Hand<hr>ex.WinTile</div> |Tiles<br>Kinds|1|2|3|4|5|6|7|8|9|
+|Pattern<br>ex.Hand<br>─────<br>ex.WinTile|Tiles<br>Kinds|1|2|3|4|5|6|7|8|9|
 |-|-|-|-|-|-|-|-|-|-|-|
 |1<br>2|
 |2|3<br>1|
@@ -11,7 +11,7 @@
 |-|-|-|-|-|-|-|-|-|-|-|
 |11<br>23|
 |14|8<br>2|
-|\-
+|.
 |101<br>24|
 |3|4<br>1|
 
@@ -825,8 +825,7 @@
 |<a id="31111312">31111312</a><br>1112345666788|.|111|2|3|4|5|6|{}|
 |678|6<br>3||||||66|{7}|88|
 
-<!--
-目次を表示する場所 
+<!-- 目次を表示する場所 -->
 <div id="toc-container" class="sidebar-nav">
   <p style="font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #ccc;">目次</p>
   <ul id="toc-list" style="list-style: none; padding-left: 0;"></ul>
@@ -882,5 +881,3 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
--->
-
