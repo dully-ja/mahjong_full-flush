@@ -9,6 +9,8 @@ title: What are the winning tiles?
 
 {% include 13_4.md %}
 
+<!-- 
+
 {% include 13_5.md %}
 
 {% include 13_6.md %}
@@ -18,3 +20,5 @@ title: What are the winning tiles?
 {% include 13_8.md %}
 
 {% include 13_9.md %}
+
+-->
