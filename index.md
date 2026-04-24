@@ -7,7 +7,7 @@ layout: default
 {% include 13_5.md %}
 
 <!-- 1. 検索窓の見た目（サイドバーの上の方に表示されます） -->
-<div class="sidebar-search" style="position: fixed; left: 20px; top: 20px; width: 200px; z-index: 1000; background: #fff; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+<div class="sidebar-search" style="position: fixed; left: 20px; top: 20px; width: 170px; z-index: 1000; background: #fff; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
   <p style="margin: 0; font-size: 0.8em;">手牌13枚入力</p>
   <!-- 13桁に達した瞬間に自動実行される設定 -->
 <input type="number" id="decimalInput" style="width: 100%; box-sizing: border-box;" 
