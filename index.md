@@ -1,6 +1,5 @@
 ---
 layout: default
-title: What are the winning tiles?
 ---
 
 <!-- 
@@ -22,3 +21,5 @@ title: What are the winning tiles?
 {% include 13_9.md %}
 
 -->
+
+{% include_relative 13_5.md %}
