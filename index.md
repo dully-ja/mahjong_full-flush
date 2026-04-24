@@ -1,6 +1,6 @@
 ## 1枚形_one-tile structure
 
-|Pattern<br>ex.Hand<hr>ex.WinTile|Tiles<br>Kinds|1|2|3|4|5|6|7|8|9|
+| <div style="line-height:1.2;">Pattern<br>ex.Hand<hr>ex.WinTile</div> |Tiles<br>Kinds|1|2|3|4|5|6|7|8|9|
 |-|-|-|-|-|-|-|-|-|-|-|
 |1<br>2|
 |2|3<br>1|
@@ -11,7 +11,7 @@
 |-|-|-|-|-|-|-|-|-|-|-|
 |11<br>23|
 |14|8<br>2|
-|-
+|\-
 |101<br>24|
 |3|4<br>1|
 
