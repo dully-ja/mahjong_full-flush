@@ -8,6 +8,14 @@ layout: default
 
 {% include 13_5.md %}
 
+{% include 13_6.md %}
+
+{% include 13_7.md %}
+
+{% include 13_8.md %}
+
+{% include 13_9.md %}
+
 <!-- 1. 検索窓の見た目（サイドバーの上の方に表示されます） -->
 <div class="sidebar-search" style="position: fixed; left: 20px; top: 20px; width: 150px; z-index: 1000; background: #fff; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
   <p style="margin: 0; font-size: 0.8em;">手牌13枚入力</p>
@@ -57,7 +65,6 @@ input[type=number] {
 }
 </style>
 
-<!-- 4. 2+1のプログラムを読み込む -->
-<script src="search4.js"></script>
+<!-- 4. 2のプログラムを読み込む -->
+<script src="search3.js"></script>
 <script src="toc.js"></script>
-<script src="render-tiles.js"></script>
