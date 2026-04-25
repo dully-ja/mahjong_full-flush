@@ -65,6 +65,7 @@ input[type=number] {
 }
 </style>
 
-<!-- 4. 2つのプログラムを読み込む -->
+<!-- 4. 2+1のプログラムを読み込む -->
 <script src="search3.js"></script>
 <script src="toc.js"></script>
+<script src="render-tiles.js"></script>
