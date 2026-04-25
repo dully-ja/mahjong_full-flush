@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', () => {
       const digits = text.split("");
       digits.forEach(num => {
         // 萬子(m)の画像を表示
-        const tileUrl = `https://github.io{num}m.png`;
+        const tileUrl = `https://raw.githubusercontent.com/FluffyStuff/riichi-mahjong-tiles/master/Export/Regular/Man{num}.png`;
         imagesHtml += `<img src="${tileUrl}" style="height: 35px; vertical-align: middle; margin: 0 1px;">`;
       });
       
