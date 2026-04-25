@@ -1,25 +1,22 @@
 // 入力された値をそのまま探す
 
+let lastHighlightedElement = null; // 現在光っている要素を記録する変数
+let lastOriginalBg = "";          // その要素の元の色を記録
+
 function executeSearch() {
-  const input = document.getElementById('decimalInput').value;
+  const inputField = document.getElementById('decimalInput');
+  const input = inputField.value;
   
-  // 入力が空でないかチェック（13桁固定でなくても動くように、あえて桁数制限は緩めています）
-  if (!input || input.length === 0) {
-    alert("検索する数値を入力してください");
-    return;
-  }
+  if (!input) return;
 
-  // 変換なし：入力された数値をそのまま検索キーにする
+  // 以前のハイライトがあれば元に戻す
+  resetHighlight();
+
   const result5 = input; 
-
   document.getElementById('resultDisplay').innerText = "検索キーワード: " + result5;
 
-  // --- 検索ロジック ---
-  
-  // 1. まず ID が一致する要素を直接探す
+  // 1. ID検索 → 2. テキスト検索
   let targetElement = document.getElementById(result5);
-
-  // 2. IDで見つからない場合、ページ内の全要素からテキストを探す
   if (!targetElement) {
     const allElements = document.querySelectorAll('p, td, th, h1, h2, h3, li, span, a');
     for (let el of allElements) {
@@ -33,18 +30,31 @@ function executeSearch() {
   if (targetElement) {
     targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
     
-    // 強調表示（要素そのものか、親のセルを光らせる）
     const highlightTarget = targetElement.closest('td') || targetElement;
-    const originalBg = highlightTarget.style.backgroundColor;
+    
+    // 現在の状態を保存して光らせる（setTimeoutは削除）
+    lastHighlightedElement = highlightTarget;
+    lastOriginalBg = highlightTarget.style.backgroundColor;
     highlightTarget.style.backgroundColor = "#fff3cd";
-    highlightTarget.style.transition = "background-color 0.5s";
-    setTimeout(() => {
-      highlightTarget.style.backgroundColor = originalBg || "transparent";
-    }, 2000);
+    highlightTarget.style.transition = "background-color 0.3s";
 
-    // 次の入力のために、入力欄の数字を選択状態にする
-    document.getElementById('decimalInput').select();
-  } else {
-    alert("一致する箇所が見つかりませんでした: " + result5);
+    inputField.select();
   }
 }
+
+// ハイライトを元に戻す関数
+function resetHighlight() {
+  if (lastHighlightedElement) {
+    lastHighlightedElement.style.backgroundColor = lastOriginalBg || "transparent";
+    lastHighlightedElement = null;
+  }
+}
+
+// 入力欄の内容が変わったら（1文字でも消したり変えたりしたら）色を消す
+document.addEventListener('DOMContentLoaded', () => {
+  const inputField = document.getElementById('decimalInput');
+  inputField.addEventListener('input', () => {
+    // 入力欄が空、または今のハイライト対象と値が異なる場合にリセット
+    resetHighlight();
+  });
+});
