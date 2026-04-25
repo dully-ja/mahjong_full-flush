@@ -1,7 +1,7 @@
 // 入力された値をそのまま探す
 
-let lastHighlightedElement = null; // 現在光っている要素を記録する変数
-let lastOriginalBg = "";          // その要素の元の色を記録
+let lastHighlightedElement = null;
+let lastOriginalBg = "";
 
 function executeSearch() {
   const inputField = document.getElementById('decimalInput');
@@ -9,18 +9,18 @@ function executeSearch() {
   
   if (!input) return;
 
-  // 以前のハイライトがあれば元に戻す
+  // 検索開始時に前回のハイライトをリセット
   resetHighlight();
 
-  const result5 = input; 
-  document.getElementById('resultDisplay').innerText = "検索キーワード: " + result5;
+  const searchKey = input;
+  document.getElementById('resultDisplay').innerText = "検索キーワード: " + searchKey;
 
   // 1. ID検索 → 2. テキスト検索
-  let targetElement = document.getElementById(result5);
+  let targetElement = document.getElementById(searchKey);
   if (!targetElement) {
     const allElements = document.querySelectorAll('p, td, th, h1, h2, h3, li, span, a');
     for (let el of allElements) {
-      if (el.innerText.includes(result5)) {
+      if (el.innerText.includes(searchKey)) {
         targetElement = el;
         break;
       }
@@ -32,17 +32,20 @@ function executeSearch() {
     
     const highlightTarget = targetElement.closest('td') || targetElement;
     
-    // 現在の状態を保存して光らせる（setTimeoutは削除）
+    // ハイライトを適用
     lastHighlightedElement = highlightTarget;
     lastOriginalBg = highlightTarget.style.backgroundColor;
     highlightTarget.style.backgroundColor = "#fff3cd";
     highlightTarget.style.transition = "background-color 0.3s";
 
+    // 入力欄を全選択（次の入力準備）
     inputField.select();
+    
+    // 【重要】入力監視側で「今の検索キーワードと同じ」なら色を消さないように記憶
+    inputField.dataset.currentMatch = searchKey;
   }
 }
 
-// ハイライトを元に戻す関数
 function resetHighlight() {
   if (lastHighlightedElement) {
     lastHighlightedElement.style.backgroundColor = lastOriginalBg || "transparent";
@@ -50,11 +53,13 @@ function resetHighlight() {
   }
 }
 
-// 入力欄の内容が変わったら（1文字でも消したり変えたりしたら）色を消す
+// 入力欄の監視
 document.addEventListener('DOMContentLoaded', () => {
   const inputField = document.getElementById('decimalInput');
   inputField.addEventListener('input', () => {
-    // 入力欄が空、または今のハイライト対象と値が異なる場合にリセット
-    resetHighlight();
+    // 入力中の値が、現在ハイライトしているキーワードと異なる場合のみ色を消す
+    if (inputField.value !== inputField.dataset.currentMatch) {
+      resetHighlight();
+    }
   });
 });
