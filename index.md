@@ -2,7 +2,7 @@
 layout: default
 ---
 
-[多面張聴牌の構造解析_structure analysis for multiple-wait shapes](element.md)
+[多面張聴牌の構造解析_structure analysis for multiple-wait shapes](element2.md)
 
 {% include 13_4.md %}
 
