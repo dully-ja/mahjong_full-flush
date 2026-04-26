@@ -4,6 +4,16 @@ layout: default
 
 [多面張聴牌の構造解析_structure analysis for multiple-wait shapes](element2.md)
 
+{% include 13_4.md %}
+
+{% include 13_5.md %}
+
+{% include 13_6.md %}
+
+{% include 13_7.md %}
+
+{% include 13_8.md %}
+
 {% include 13_9.md %}
 
 <!-- 1. 検索窓の見た目（サイドバーの上の方に表示されます） -->
