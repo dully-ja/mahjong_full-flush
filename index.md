@@ -68,4 +68,3 @@ input[type=number] {
 <!-- 4. 2のプログラムを読み込む -->
 <script src="search3.js"></script>
 <script src="toc.js"></script>
-/* <script src="render-tiles.js"></script> */
