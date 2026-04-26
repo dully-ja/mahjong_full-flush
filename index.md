@@ -53,6 +53,11 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.markdown-body table {
+  display: block;
+  overflow-x: auto;
+}
 </style>
 
 <!-- 4. 2のプログラムを読み込む -->
